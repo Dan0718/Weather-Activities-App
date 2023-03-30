@@ -7,15 +7,19 @@ import List from './components/list';
 function App() {
   const [activities, setActivities] = useState([]);
   const [weather, setWeather] = useState(null);
-
+  
   useEffect(() => {
     const fetchWeather = () => {
       fetch('https://example-apis.vercel.app/api/weather')
         .then((response) => response.json())
-        .then((data) => setWeather(data));
+        .then((data) => {
+          console.log(data); // Log the weather data to the console
+          setWeather(data);
+        });
     };
-  
+
     fetchWeather();
+    
   
     const timer = setInterval(() => {
       fetchWeather();
@@ -32,9 +36,7 @@ function App() {
     setActivities([...activities, activityWithId]);
   };
   
-  const isGoodWeather = weather && weather.temperature > 10 && !/^(rain|snow)$/i.test(weather.condition);
-
-
+  const isGoodWeather = weather && weather.temperature > 10 && weather.condition !== '🌧️' && weather.condition !== '🌨️' && weather.condition !== '☁️';
 
   return (
     <div className="Weather-App">
