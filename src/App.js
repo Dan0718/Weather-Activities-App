@@ -36,7 +36,7 @@ function App() {
     setActivities([...activities, activityWithId]);
   };
   
-  const isGoodWeather = weather && weather.temperature > 10 && weather.condition !== '🌧️' && weather.condition !== '🌨️' && weather.condition !== '☁️';
+  const isGoodWeather = weather && weather.temperature > 15 && weather.condition !== '🌧️' && weather.condition !== '🌨️' && weather.condition !== '☁️' && weather.condition !== '⛈️';
 
   return (
     <div className="Weather-App">
